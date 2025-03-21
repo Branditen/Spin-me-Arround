@@ -1,0 +1,117 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    background-image: url("ruta-de-tu-imagen.jpg"); /* 📌 Ruta de la imagen */
+    background-size: cover;  /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none; 
+    background-color: rgb(117, 117, 117);
+    color: white;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out;
+    margin-bottom: 10px; /* Espacio entre el título y el botón */
+}
+
+
+h1 {
+    font-size: 35px;
+    margin-bottom: 10px; /* Espacio entre el título y el botón */
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+span {
+    display: inline-block;
+    min-width: 50px; /* Ajusta el ancho según la cantidad de dígitos esperados */
+    text-align: left; /* Alinea el número correctamente */
+}
+
+/* Contenedor principal con 3 columnas */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 columnas, el centro es más grande */
+    gap: 15px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 50px;
+}
+
+/* Cada columna */
+.column {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gameButton{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #000000;
+    color: white;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out;
+    margin-bottom: 10px; /* Espacio entre el título y el botón */
+}
+
+.rotate {
+    transform: rotate(360deg);
+}
+
+#resetTimer {
+    margin-top: 10px;
+    padding: 10px;
+
+    background-color: #ff3b3b;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botón centrado */
+#game {
+    text-align: center;
+}
+
+#timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+#counter, #coins {
+    display: inline-block;
+    min-width: 50px;
+    text-align: left;
+    font-family: monospace;
+}
+
+#addTime {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #757575;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#addTime:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

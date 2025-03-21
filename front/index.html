@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" type="text/css; charset=UTF-8">
+    <title>Spin me arpund!</title>
+</head>
+<body>
+    <!-- Sección de Mejoras -->
+    <div class="container">
+        <div class="column" id="upgrades">
+        <h2>Mejoras</h2>
+        <button id="addTime1">Buy seconds +5s (Cost: 10 coins)</button>
+        <button id="addTime2">Uprgade to +8s (Cost: 100 coins)</button>
+        <button id="addTime3">Upgrade to +10s (Cost: 1000 coins)</button>
+        <p>Future features here...</p>
+    </div>
+
+    <!-- Sección del Juego -->
+    <div class="column" id="game">
+        <h1>Press the button to spin it</h1>
+        <p id="timer">Time: 10s</p>
+        <br><br><br> 
+        <button class="gameButton" id="spinButton">Spin me around</button>
+        <br><br><br><br>
+        <p>Spins: <span id="counter">0</span></p>
+        <p>Highest color: <span id="highestColor">None</span></p>
+        
+        <p>Coins: <span id="coins">0</span></p>
+        <button id="resetTimer">Reset Time</button>
+    </div>
+
+    <!-- Sección de la Tienda -->
+    <div class="column" id="shop">
+        <h2>Shop</h2>
+        <button id="doublePoints">Double Spin (Cost: 50 coins)</button>
+        <button id="triplePoints">Triple Spin (Cost: 100 coins)</button>
+        <button id="quadruplePoints">Cuadruple Spin (Cost: 200 coins)</button>
+        <button id="quintuplePoints">Quintuple Spin (Cost: 450 coins)</button>
+    </div>
+    <script src="script.js"></script>
+</body>
