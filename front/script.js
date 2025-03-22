@@ -15,6 +15,7 @@ let oldTime = 0;
 let buttonColorx2;
 let buttonColorx3;
 let buttonColorx4;
+let buttonColorx8;
 
 const button = document.getElementById("spinButton");
 const counter = document.getElementById("counter");
@@ -24,6 +25,10 @@ const doublePointsBtn = document.getElementById("doublePoints");
 const triplePointsBtn = document.getElementById("triplePoints");
 const quadruplePointsBtn = document.getElementById("quadruplePoints");
 const quintuplePointsBtn = document.getElementById("quintuplePoints");
+const sextuplePointsBtn = document.getElementById("sextuplePoints");
+const septuplePointsBtn = document.getElementById("septuplePoints");
+const octuplePointsBtn = document.getElementById("octuplePoints");
+
 const timerText = document.getElementById("timer");
 const addTimeButton1 = document.getElementById("addTime1");
 const addTimeButton2 = document.getElementById("addTime2");
@@ -37,7 +42,7 @@ button.addEventListener("click", function() {
     
     rotation += 360;
     clickCount += 1 * multiplier;
-    coins += 0.5 * multiplier; // Ganas monedas según la mejora
+    coins += 0.25 * multiplier; // Ganas monedas según la mejora
     this.style.transform = `rotate(${rotation}deg)`;
 
     counter.textContent = clickCount;
@@ -47,31 +52,31 @@ button.addEventListener("click", function() {
     let newLevel = 0;
     let colorName = "";
 
-    if (clickCount > 999){
+    if (clickCount > 1799){
         newColor = "#8c25fa"; // Violet
         newLevel = 9;
         colorName = "Violet";
-    } else if (clickCount > 499){
+    } else if (clickCount > 999){
         newColor = "#25faea"; // Turquesa
         newLevel = 8;
         colorName = "Turquoise";
-    } else if (clickCount > 349) {
+    } else if (clickCount > 599) {
         newColor = "#fc0f1d"; // Rojo
         newLevel = 7;
         colorName = "Red";
-    } else if (clickCount > 249) {
+    } else if (clickCount > 299) {
         newColor = "#fc0fe6"; // Fuxia
         newLevel = 6;
         colorName = "Fuxia";
-    } else if (clickCount > 99) {
+    } else if (clickCount > 149) {
         newColor = "#74fc0f"; // Verde
         newLevel = 5;
         colorName = "Green";
-    } else if (clickCount > 44) {
+    } else if (clickCount > 79) {
         newColor = "#f4cf14"; // Dorado
         newLevel = 4;
         colorName = "Gold";
-    } else if (clickCount > 24) {
+    } else if (clickCount > 29) {
         newColor = "#007BFF"; // azul
         newLevel = 3;
         colorName = "Blue";
@@ -143,11 +148,14 @@ doublePointsBtn.addEventListener("click", function() {
             let buttonColorx2 = window.getComputedStyle(doublePointsBtn).backgroundColor;
             let buttonColorx3 = window.getComputedStyle(triplePointsBtn).backgroundColor;
             let buttonColorx4 = window.getComputedStyle(quadruplePointsBtn).backgroundColor;
+            let buttonColorx8 = window.getComputedStyle(octuplePointsBtn).backgroundColor;
             console.log(buttonColorx2, buttonColorx3, buttonColorx4)
-            if (buttonColorx4 !== "rgb(40, 167, 69)" && buttonColorx3 !== "rgb(40, 167, 69)" && buttonColorx2 && "rgb(40, 167, 69)") {
+            if (buttonColorx8 === rgb(40, 167, 69) && buttonColorx4 !== "rgb(40, 167, 69)" && buttonColorx3 !== "rgb(40, 167, 69)" && buttonColorx2 && "rgb(40, 167, 69)") {
                 doublePointsBtn.style.backgroundColor = "#8c25fa";
             }
         }
+    } else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }
 });
 
@@ -161,7 +169,7 @@ triplePointsBtn.addEventListener("click", function() {
                 coinsText.textContent = coins;
                 triplePointsBtn.style.backgroundColor = "#28a745"
                 alert("¡Now your spins is multiplied by 3!");
-
+                
             } else {
                 alert("You don't have enough coins.");
             }
@@ -175,6 +183,8 @@ triplePointsBtn.addEventListener("click", function() {
                 triplePointsBtn.style.backgroundColor = "#8c25fa";
             }
         }
+    } else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }
 });
 
@@ -201,7 +211,9 @@ quadruplePointsBtn.addEventListener("click", function() {
                 quadruplePointsBtn.style.backgroundColor = "#8c25fa";
             }
         }
-    }
+    } else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }    
 });
 
 // Comprar Triple Giro
@@ -220,7 +232,69 @@ quintuplePointsBtn.addEventListener("click", function() {
         } else {
             alert("You already have this upgrade or you have a better one.");
         }
-    }
+    } else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
+});
+
+sextuplePointsBtn.addEventListener("click", function() {
+    if (!timerActive) {
+        if (multiplier > 0 && multiplier < 6) {
+            if (coins >= 900) {
+                coins -= 900;
+                multiplier = 6;
+                coinsText.textContent = coins;
+                sextuplePointsBtn.style.backgroundColor = "#28a745"
+                alert("¡Now your spins is multiplied by 6!!!1!!");
+            } else {
+                alert("You don't have enough coins.");
+            }
+        } else {
+            alert("You already have this upgrade or you have a better one.");
+        }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
+});
+
+septuplePointsBtn.addEventListener("click", function() {
+    if (!timerActive) {
+        if (multiplier > 0 && multiplier < 7) {
+            if (coins >= 1500) {
+                coins -= 1500;
+                multiplier = 7;
+                coinsText.textContent = coins;
+                septuplePointsBtn.style.backgroundColor = "#28a745"
+                alert("¡Now your spins is MULTIPLIED BY 7!!!");
+            } else {
+                alert("You don't have enough coins.");
+            }
+        } else {
+            alert("You already have this upgrade or you have a better one.");
+        }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
+});
+
+octuplePointsBtn.addEventListener("click", function() {
+    if (!timerActive) {
+        if (multiplier > 0 && multiplier < 8) {
+            if (coins >= 3000) {
+                coins -= 3000;
+                multiplier = 8;
+                coinsText.textContent = coins;
+                octuplePointsBtn.style.backgroundColor = "#28a745"
+                alert("You must be crazy, man.");
+            } else {
+                alert("You don't have enough coins.");
+            }
+        } else {
+            alert("You already have this upgrade or you have a better one.");
+        }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
 });
 
 addTimeButton1.addEventListener("click", function() {
@@ -240,7 +314,9 @@ addTimeButton1.addEventListener("click", function() {
             console.log("hola. Extra time = ", extraTime);
             alert("You already have this upgrade or you have more seconds than this.");
         }
-    }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
 });
 
 addTimeButton2.addEventListener("click", function() {
@@ -260,7 +336,9 @@ addTimeButton2.addEventListener("click", function() {
             console.log("hola. Extra time = ", extraTime);
             alert("You already have this upgrade or you have more seconds than this.");
         }
-    }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
 });
 
 addTimeButton3.addEventListener("click", function() {
@@ -280,5 +358,7 @@ addTimeButton3.addEventListener("click", function() {
             console.log("hello. Extra time = ", extraTime);
             alert("You already have this upgrade or you have more seconds than this.");
         }
-    }
+    }  else {
+        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+    }  
 });
