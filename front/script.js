@@ -155,7 +155,7 @@ doublePointsBtn.addEventListener("click", function() {
             }
         }
     } else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }
 });
 
@@ -184,7 +184,7 @@ triplePointsBtn.addEventListener("click", function() {
             }
         }
     } else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }
 });
 
@@ -212,7 +212,7 @@ quadruplePointsBtn.addEventListener("click", function() {
             }
         }
     } else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }    
 });
 
@@ -233,7 +233,7 @@ quintuplePointsBtn.addEventListener("click", function() {
             alert("You already have this upgrade or you have a better one.");
         }
     } else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -253,7 +253,7 @@ sextuplePointsBtn.addEventListener("click", function() {
             alert("You already have this upgrade or you have a better one.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -273,7 +273,7 @@ septuplePointsBtn.addEventListener("click", function() {
             alert("You already have this upgrade or you have a better one.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -293,7 +293,7 @@ octuplePointsBtn.addEventListener("click", function() {
             alert("You already have this upgrade or you have a better one.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -315,7 +315,7 @@ addTimeButton1.addEventListener("click", function() {
             alert("You already have this upgrade or you have more seconds than this.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -337,7 +337,7 @@ addTimeButton2.addEventListener("click", function() {
             alert("You already have this upgrade or you have more seconds than this.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
 
@@ -359,6 +359,6 @@ addTimeButton3.addEventListener("click", function() {
             alert("You already have this upgrade or you have more seconds than this.");
         }
     }  else {
-        alert("You cant buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
+        alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
 });
