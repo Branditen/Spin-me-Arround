@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     flex-direction: column; /* Asegura que los elementos estén en columna */
-    background-image: url("ruta-de-tu-imagen.jpg"); /* 📌 Ruta de la imagen */
+    background-image: url("./src/galaxy_backround.jpg"); /* 📌 Ruta de la imagen */
     background-size: cover;  /* Ajusta la imagen al tamaño de la pantalla */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que se repita */
@@ -57,6 +57,20 @@ span {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 80%;
+}
+
+.centerColumn {
+    background: white;
+    /* background-image: url("./src/galaxy_backround.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: difference; */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 80%;
 }
 
 .gameButton{
