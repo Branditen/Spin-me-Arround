@@ -485,10 +485,10 @@ function cambiarFondo(fondo) {
             break;
         case "fondo9":
             document.body.style.background.color = "#f0f0f0"; // galactic
-            document.body.style.background.image = url("./src/galaxy_backround.jpg");
-            document.body.style.background.size = cover;
-            document.body.style.background.position = center;
-            document.body.style.background.repeat = no-repeat;
+            document.body.style.backgroundImage = "url('src/galaxy_backround.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.backgroundRepeat = "no-repeat";
             break;
         default:
             document.body.style.background = "#f0f0f0";
