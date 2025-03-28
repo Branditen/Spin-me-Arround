@@ -1,6 +1,6 @@
-document.getElementById("spinButton").addEventListener("click", function() {
-    this.classList.toggle("rotate");
-});
+// document.getElementById("spinButton").addEventListener("click", function() {
+//     this.classList.toggle("rotate");
+// });
 
 let rotation = 0;
 let clickCount = 0;
@@ -35,6 +35,17 @@ const addTimeButton2 = document.getElementById("addTime2");
 const addTimeButton3 = document.getElementById("addTime3");
 const resetButton = document.getElementById("resetTimer");
 
+const openPopup = document.getElementById("openPopup");
+const popup = document.getElementById("popup");
+const confirmChange = document.getElementById("confirmChange");
+const closePopup = document.getElementById("closePopup");
+const backgroundSelector = document.getElementById("backgroundSelector");
+
+const developerButton = document.getElementById("developerMode");
+
+let maxColorLevel = 0; // Nivel de color alcanzado
+let fondosDesbloqueados = ["#f0f0f0"]; // Color blanco por defecto
+
 button.addEventListener("click", function() {
     if (!timerActive) {
         startTimer();
@@ -52,51 +63,62 @@ button.addEventListener("click", function() {
     let newLevel = 0;
     let colorName = "";
 
-    if (clickCount > 1799){
-        newColor = "#8c25fa"; // Violet
-        newLevel = 9;
-        colorName = "Violet";
-    } else if (clickCount > 999){
-        newColor = "#25faea"; // Turquesa
-        newLevel = 8;
-        colorName = "Turquoise";
-    } else if (clickCount > 599) {
-        newColor = "#fc0f1d"; // Rojo
-        newLevel = 7;
-        colorName = "Red";
-    } else if (clickCount > 299) {
-        newColor = "#fc0fe6"; // Fuxia
-        newLevel = 6;
-        colorName = "Fuxia";
-    } else if (clickCount > 149) {
-        newColor = "#74fc0f"; // Verde
-        newLevel = 5;
-        colorName = "Green";
-    } else if (clickCount > 79) {
-        newColor = "#f4cf14"; // Dorado
-        newLevel = 4;
-        colorName = "Gold";
-    } else if (clickCount > 29) {
-        newColor = "#007BFF"; // azul
-        newLevel = 3;
-        colorName = "Blue";
-    } else if (clickCount > 14) {
-        newColor = "#646464"; // gris
-        newLevel = 2;
-        colorName = "Grey";
+    if (!modoDevActivo){
+        if (clickCount > 1799){
+            newColor = "#8c25fa"; // Violet
+            newLevel = 8;
+            colorName = "Violet";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 999){
+            newColor = "#25faea"; // Turquesa
+            newLevel = 7;
+            colorName = "Turquoise";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 599) {
+            newColor = "#fc0f1d"; // Rojo
+            newLevel = 6;
+            colorName = "Red";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 299) {
+            newColor = "#fc0fe6"; // Fuxia
+            newLevel = 5;
+            colorName = "Fuxia";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 149) {
+            newColor = "#74fc0f"; // Verde
+            newLevel = 4;
+            colorName = "Green";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 79) {
+            newColor = "#f4cf14"; // Dorado
+            newLevel = 3;
+            colorName = "Gold";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 29) {
+            newColor = "#007BFF"; // Azul
+            newLevel = 2;
+            colorName = "Blue";
+            maxColorLevel = newLevel;
+        } else if (clickCount > 14) {
+            newColor = "#646464"; // Gris
+            newLevel = 1;
+            colorName = "Grey";
+            maxColorLevel = newLevel;
+        }
+        //grey, blue, gold, green, fuxia, red, turquoise, violet
+        // Solo actualizar si el nivel es más alto
+        if (newLevel > highestLevel) {
+            highestLevel = newLevel;
+            highestColorText.textContent = colorName;
+            highestColorText.style.color = newColor; // Cambiar color del texto
+        }
+    
+        // Aplicar color al botón
+        if (newColor !== "") {
+            button.style.backgroundColor = newColor;
+        }
     }
 
-    // Solo actualizar si el nivel es más alto
-    if (newLevel > highestLevel) {
-        highestLevel = newLevel;
-        highestColorText.textContent = colorName;
-        highestColorText.style.color = newColor; // Cambiar color del texto
-    }
-
-    // Aplicar color al botón
-    if (newColor !== "") {
-        button.style.backgroundColor = newColor;
-    }
 });
 
 function startTimer() {
@@ -361,4 +383,222 @@ addTimeButton3.addEventListener("click", function() {
     }  else {
         alert("You can't buy anything while the timer is on. Please wait until it stops or reset manually. Thank you :).")
     }  
+});
+
+openPopup.addEventListener("click", function() {
+    desbloquearFondos(); // Actualiza las opciones antes de abrir el pop-up
+    popup.style.display = "block";
+    document.addEventListener("click", function(event) {
+        if (popup.style.display === "block" && !popup.contains(event.target) && event.target !== openPopup) {
+            popup.style.display = "none";
+        }
+    });
+});
+
+closePopup.addEventListener("click", function() {
+    popup.style.display = "none";
+});
+
+confirmChange.addEventListener("click", function() {
+    let selectedBackground = backgroundSelector.value;
+    cambiarFondo(selectedBackground);
+    popup.style.display = "none";
+});
+
+// Función para desbloquear fondos según el nivel alcanzado
+function desbloquearFondos() {
+    const opciones = backgroundSelector.options;
+    for (let i = 1; i < opciones.length; i++) {
+        if (i <= maxColorLevel) {
+            opciones[i].disabled = false;
+        } else {
+            opciones[i].disabled = true;
+        }
+    }
+}
+
+// Función para cambiar el fondo
+// function cambiarFondo(fondo) {
+//     switch (fondo) {
+//         case "fondo1":
+//             document.body.style.background = "linear-gradient(to right, #FFD700, #FFCC00)"; // Grey
+//             break;
+//         case "fondo2":
+//             document.body.style.background = "linear-gradient(to right, #74fc0f, #4CAF50)"; // Blue
+//             break;
+//         case "fondo3":
+//             document.body.style.background = "linear-gradient(to right, #fc0fe6, #8B00FF)"; // Gold
+//             break;
+//         case "fondo4":
+//             document.body.style.background = "linear-gradient(to right, #fc0f1d, #FF0000)"; // Green
+//             break;
+//         case "fondo5":
+//             document.body.style.background = "linear-gradient(to right, #fc0f1d, #FF0000)"; // Fuxia
+//             break;
+//         case "fondo6":
+//             document.body.style.background = "linear-gradient(to right, #fc0f1d, #FF0000)"; // Red
+//             break;
+//         case "fondo7":
+//             document.body.style.background = "linear-gradient(to right, #fc0f1d, #FF0000)"; // Turquoise
+//             break;
+//         case "fondo8":
+//             document.body.style.background = "linear-gradient(to right, #fc0f1d, #FF0000)"; // Violet
+//             break;
+//         case "fondo9":
+//             document.body.style.background.color = "#f0f0f0"; // galactic
+//             document.body.style.background.image = url("./src/galaxy_backround.jpg");
+//             document.body.style.background.size = cover;
+//             document.body.style.background.position = center;
+//             document.body.style.background.repeat = no-repeat;
+//             break;
+//         default:
+//             document.body.style.background = "#f0f0f0";
+//             document.body.style.background.image = none;
+//     }
+// }
+
+function cambiarFondo(fondo) {
+    switch (fondo) {
+        case "fondo1":
+            document.body.style.background = "linear-gradient(to right,rgb(177, 177, 177),rgb(99, 99, 99))"; // Grey
+            break;
+        case "fondo2":
+            document.body.style.background = "linear-gradient(to right,rgb(63, 82, 255),rgb(24, 34, 173))"; // Blue
+            break;
+        case "fondo3":
+            document.body.style.background = "linear-gradient(to right,rgb(172, 155, 8),rgb(196, 192, 7))"; // Gold
+            break;
+        case "fondo4":
+            document.body.style.background = "linear-gradient(to right,rgb(15, 252, 15),rgb(95, 199, 69))"; // Green
+            break;
+        case "fondo5":
+            document.body.style.background = "linear-gradient(to right,rgb(255, 44, 237),rgb(250, 117, 239))"; // Fuxia
+            break;
+        case "fondo6":
+            document.body.style.background = "linear-gradient(to right, #fc0f1d,rgb(112, 17, 17))"; // Red
+            break;
+        case "fondo7":
+            document.body.style.background = "linear-gradient(to right,rgb(31, 255, 206),rgb(6, 122, 117))"; // Turquoise
+            break;
+        case "fondo8":
+            document.body.style.background = "linear-gradient(to right,rgb(165, 15, 252),rgb(102, 10, 114))"; // Violet
+            break;
+        case "fondo9":
+            document.body.style.background.color = "#f0f0f0"; // galactic
+            document.body.style.background.image = url("./src/galaxy_backround.jpg");
+            document.body.style.background.size = cover;
+            document.body.style.background.position = center;
+            document.body.style.background.repeat = no-repeat;
+            break;
+        default:
+            document.body.style.background = "#f0f0f0";
+            document.body.style.background.image = null;
+    }
+}
+
+// ⚡ Actualizar el nivel máximo de color alcanzado
+// function actualizarColorMaximo(color) {
+//     const niveles = {
+//         "#000000": 1, // Black
+//         "#646464": 1, // Grey
+//         "#007BFF": 2, // Blue
+//         "#f4cf14": 3, // Gold
+//         "#74fc0f": 4, // Green
+//         "#fc0fe6": 5, // Fuxia
+//         "#fc0f1d": 6, // Red
+//         "#25faea": 7, // Turquoise
+//         "#8c25fa": 8, // Violet
+
+//         // grey, blue, gold, green, fuxia, red, turquoise, violet
+//     };
+    
+//     if (niveles[color] && niveles[color] > maxColorLevel) {
+//         maxColorLevel = niveles[color]; // Se actualiza el nivel
+//     }
+// }
+
+const fondosDesbloqueables = {
+    2: ["#646464", "#007BFF"], // Grey and Blue
+    3: ["#f4cf14", "#74fc0f"], // Gold and Green (colores)
+    4: ["url('./src/galaxy_backround.jpg')"] // Fondo con imagen en Nivel 4
+};
+
+function actualizarFondoMaximo(nivel) {
+    if (nivel > maxColorLevel) {
+        maxColorLevel = nivel;
+        fondosDesbloqueados.push(...fondosDesbloqueables[nivel]); // Agrega los fondos desbloqueados (colores o imágenes)
+    }
+}
+
+// function desbloquearFondos() {
+//     const opciones = document.getElementById("backgroundSelector").options;
+//     for (let i = 0; i < opciones.length; i++) {
+//         if (fondosDesbloqueados.includes(opciones[i].value)) {
+//             opciones[i].disabled = false; // Habilita el fondo si está desbloqueado
+//         }
+//     }
+// }
+
+document.getElementById("backgroundSelector").addEventListener("change", function() {
+    const fondoSeleccionado = this.value;
+    document.body.style.background = fondoSeleccionado;
+    document.body.style.backgroundSize = "cover"; // Ajusta la imagen de fondo
+});
+
+const colours = ["red", "orange", "yellow", "green", "blue"];
+let indice = 0;
+let intervaloColor = null; // Variable para almacenar el intervaloColor
+let modoDevActivo = false; // Para saber si está en Developer Mode
+
+developerButton.addEventListener("click", function() {
+    coins = 9999999;
+    coinsText.textContent = coins;
+    highestLevel = 9;
+    maxColorLevel = 9;
+    highestColorText.textContent = "Multicolor";
+    highestColorText.style.color = "#8c25fa"; // Cambiar color del texto
+    extraTime = 40;
+    multiplier = 20;
+    
+    clearInterval(interval);
+    timerActive = false;
+    clickCount = 0;
+    counter.textContent = clickCount; // Reinicia el contador en pantalla
+    timer.style.color = "#000000"
+    timerText.textContent = `Time: ${50}s`
+
+    if (intervaloColor) {
+        button.classList.remove("devBtn")
+        clearInterval(intervaloColor); // Si ya está corriendo, lo detiene
+        intervaloColor = null; // Restablece la variable
+        modoDevActivo = false;
+        coins = 0;
+        coinsText.textContent = coins;
+        highestLevel = 0;
+        maxColorLevel = 0;
+        highestColorText.textContent = "None";
+        highestColorText.style.color = "#000000"; // Cambiar color del texto
+        multiplier = 1;
+        
+        clearInterval(interval);
+        timerActive = false;
+        clickCount = 0;
+        counter.textContent = clickCount; // Reinicia el contador en pantalla
+        button.style.backgroundColor = "#000000"; // nergro original
+        timer.style.color = "#000000"
+
+        extraTime = 0;
+        timeLeft = 10;
+        oldTime = 10;
+        timerText.textContent = `Time: ${10}s`; // Restablece el tiempo visualmente
+    } else {
+        
+        
+        button.classList.add("devBtn");
+        intervaloColor = setInterval(() => {
+            button.style.backgroundColor = colours[indice];
+            indice = (indice + 1) % colours.length; // Avanza cíclicamente
+        }, 500); // Cambia de color cada 500ms (medio segundo)
+        modoDevActivo = true;
+    }
 });

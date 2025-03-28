@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" type="text/css; charset=UTF-8">
+    <link rel="icon" type="image/x-icon" href="src/spinner.ico">
     <title>Spin me around!</title>
 </head>
 <body>
@@ -15,6 +16,27 @@
             <button id="addTime2">Upgrade to +8s (Cost: 100 coins)</button>
             <button id="addTime3">Upgrade to +10s (Cost: 1000 coins)</button>
             <p>Future features here...</p>
+
+            <br><br><br><br><br><br><br><br><br>
+            <button id="openPopup">Change Background</button>
+            <div id="popup" class="popup">
+                <p>Select background:</p>
+                <select id="backgroundSelector">
+                    <option value="default" selected>Background default</option>
+                    <option value="fondo1" disabled>Background 1 (Level Grey)</option>
+                    <option value="fondo2" disabled>Background 2 (Level Blue)</option>
+                    <option value="fondo3" disabled>Background 3 (Level Gold)</option>
+                    <option value="fondo4" disabled>Background 4 (Level Green)</option>
+                    <option value="fondo5" disabled>Background 5 (Level Fuxia)</option>
+                    <option value="fondo6" disabled>Background 6 (Level Red)</option>
+                    <option value="fondo7" disabled>Background 7 (Level Turquoise)</option>
+                    <option value="fondo8" disabled>Background 8 (Level Violet)</option>
+                    <option value="fondo9" disabled>Background 9 (Level Galactico)</option>
+                    <!-- grey, blue, gold, green, fuxia, red, turquoise, violet -->
+                </select>
+                <button id="confirmChange">Apply</button>
+                <button id="closePopup">Close</button>
+            </div>
         </div>
 
         <!-- Sección del Juego -->
@@ -29,6 +51,8 @@
             
             <p>Coins: <span id="coins">0</span></p>
             <button id="resetTimer">Reset Time</button>
+            <br><br>
+            <button class="developerButton" id="developerMode">Developer Mode</button>
         </div>
 
         <!-- Sección de la Tienda -->
